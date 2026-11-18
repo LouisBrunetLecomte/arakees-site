@@ -4,309 +4,157 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arakees · The all-in-one platform for independent consultants</title>
-<meta name="description" content="Website, online booking, client portal, proposals and invoicing in one platform, under your own brand. Built for independent consultants and coaches. Join the waiting list.">
+<meta name="description" content="Website, online booking, client portal, proposals and invoicing in one platform, under your own brand. Built for independent consultants and coaches.">
 <link rel="canonical" href="https://www.arakees.com/">
 <link rel="icon" type="image/png" href="/assets/arakees-mark-128.png">
 <link rel="apple-touch-icon" href="/assets/arakees-mark-512.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Arakees · The all-in-one platform for independent consultants">
-<meta property="og:description" content="Website, online booking, client portal, proposals and invoicing in one platform, under your own brand. Built for independent consultants and coaches. Join the waiting list.">
+<meta property="og:description" content="Website, online booking, client portal, proposals and invoicing in one platform, under your own brand. Built for independent consultants and coaches.">
 <meta property="og:url" content="https://www.arakees.com/">
 <meta property="og:image" content="https://www.arakees.com/assets/og-arakees.png">
 <meta name="twitter:card" content="summary_large_image">
-<style>
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.5;color:#1b2a33;background:#fff}
-img{max-width:100%;height:auto}
-a{color:inherit}
-
-/* Intro: the planet appears, spins left, makes room for the name, then docks into the logo */
-#intro { position: fixed; inset: 0; z-index: 200; background: var(--q-bg); display: grid; place-items: center; transition: opacity .6s ease; }
-#intro.gone { opacity: 0; pointer-events: none; }
-#iname { position: fixed; left: 50%; top: 50%; z-index: 210; transform: translate(-50%, -50%); transform-origin: 0 0; white-space: nowrap; line-height: 1; font-weight: 700; font-size: clamp(36px, 8vw, 72px); color: var(--q-ink); opacity: 0; transition: opacity .5s ease; pointer-events: none; will-change: transform; }
-#iname.on { opacity: 1; }
-html.intro-on .q-header .q-logo { visibility: hidden; }
-#intro .skip { position: absolute; right: 16px; bottom: 16px; background: none; border: 1px solid var(--q-line); border-radius: 99px; padding: 8px 14px; color: var(--q-muted); font: inherit; font-size: 14px; cursor: pointer; }
-#planet { position: fixed; left: 0; top: 0; z-index: 210; width: 400px; height: 400px; transform-origin: 0 0; opacity: 0; pointer-events: none; will-change: transform, opacity; }
-#planet canvas, .q-logo canvas { width: 100%; height: 100%; display: block; }
-.q-logo canvas { width: 32px; height: 32px; }
-</style>
-<style>
-:root { --q-ink: #0f2a37; --q-text: #33505d; --q-muted: #6a8692; --q-line: #dde8ec; --q-bg: #ffffff; --q-soft: #f4f8f9; --q-brand: #1f5f7a; --q-brand-2: #2f6f8f; --q-mint: #3fb39a; }
-#wrapwrap { background: var(--q-bg); }
-.q-site { color: var(--q-text); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-.q-site * { box-sizing: border-box; }
-.q-site a { color: var(--q-brand); }
-.q-site :focus-visible { outline: 3px solid var(--q-mint); outline-offset: 2px; }
-.q-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-.q-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--q-line); }
-.q-header .q-wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
-.q-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--q-ink) !important; text-decoration: none; }
-.q-logo img { width: 32px; height: 32px; }
-.q-logo span b { color: var(--q-brand-2); }
-.q-nav { display: flex; gap: 24px; margin-left: auto; }
-.q-nav a { color: var(--q-text); text-decoration: none; font-size: 15px; font-weight: 500; }
-.q-nav a:hover { color: var(--q-ink); }
-.q-btn { display: inline-block; padding: 11px 20px; border-radius: 8px; background: var(--q-brand); color: #fff !important; font-weight: 600; font-size: 15px; text-decoration: none; border: 0; cursor: pointer; }
-.q-btn:hover { background: #174d63; }
-.q-btn-ghost { background: transparent; color: var(--q-brand) !important; box-shadow: inset 0 0 0 1.5px var(--q-brand); }
-.q-btn-ghost:hover { background: var(--q-soft); }
-@media (max-width: 860px) { .q-nav { display: none; } .q-header .q-btn { margin-left: auto; } }
-    </style><style>
-.q-hero { padding: 72px 0 64px; background: linear-gradient(180deg, var(--q-soft), #fff); border-bottom: 1px solid var(--q-line); }
-.q-hero .q-wrap > div { max-width: 760px; }
-.q-tag { display: inline-block; margin-bottom: 16px; padding: 4px 12px; border-radius: 999px; background: #e3f3ef; color: #1d6b5a; font-size: 13px; font-weight: 600; }
-.q-hero h1 { margin: 0; color: var(--q-ink); font-size: clamp(34px, 4.6vw, 50px); line-height: 1.12; letter-spacing: -.02em; font-weight: 750; }
-.q-hero .q-lead { margin: 18px 0 0; font-size: 18px; }
-.q-form { display: flex; gap: 10px; margin-top: 28px; max-width: 520px; }
-.q-form input[type=email] { flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid #c8d8de; border-radius: 8px; font: inherit; color: var(--q-ink); background: #fff; }
-.q-form input[type=email]:focus { border-color: var(--q-brand-2); outline: none; box-shadow: 0 0 0 3px rgba(47,111,143,.15); }
-.q-form .q-btn { white-space: nowrap; }
-.q-form .q-btn:disabled { opacity: .6; cursor: default; }
-.q-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.q-note { margin: 10px 0 0; font-size: 13px; color: var(--q-muted); }
-.q-msg { margin: 10px 0 0; min-height: 1.5em; font-weight: 600; font-size: 15px; }
-.q-msg.ok { color: #1d6b5a; } .q-msg.err { color: #b42318; }
-.q-sec { padding: 72px 0; }
-.q-sec.alt { background: var(--q-soft); border-top: 1px solid var(--q-line); border-bottom: 1px solid var(--q-line); }
-.q-sec h2 { margin: 0 0 10px; color: var(--q-ink); font-size: clamp(26px, 3.2vw, 34px); letter-spacing: -.01em; }
-.q-sec .q-intro { margin: 0 0 32px; max-width: 680px; font-size: 17px; }
-.q-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; }
-.q-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; }
-.q-card { padding: 22px; border: 1px solid var(--q-line); border-radius: 10px; background: #fff; }
-.q-card h3 { margin: 0 0 6px; color: var(--q-ink); font-size: 17px; }
-.q-card p { margin: 0; font-size: 15px; }
-.q-num { display: inline-grid; place-items: center; width: 32px; height: 32px; margin-bottom: 12px; border-radius: 50%; background: var(--q-brand); color: #fff; font-weight: 700; }
-.q-faq { max-width: 780px; }
-.q-faq details { padding: 16px 0; border-top: 1px solid var(--q-line); }
-.q-faq details:last-child { border-bottom: 1px solid var(--q-line); }
-.q-faq summary { cursor: pointer; color: var(--q-ink); font-weight: 600; font-size: 17px; }
-.q-faq p { margin: 10px 0 0; }
-.q-cta { padding: 56px 0; background: var(--q-brand); color: #e6f2f5; text-align: center; }
-.q-cta h2 { margin: 0 0 8px; color: #fff; font-size: 28px; }
-.q-cta p { margin: 0 0 22px; }
-.q-cta .q-btn { background: #fff; color: var(--q-brand) !important; }
-.q-cta .q-btn:hover { background: #eaf4f6; }
-@media (max-width: 960px) { .q-grid3 { grid-template-columns: repeat(2, 1fr); } .q-grid4 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .q-grid3, .q-grid4 { grid-template-columns: 1fr; } .q-form { flex-direction: column; } .q-hero { padding-top: 40px; } }
-            </style><style>
-.q-footer { margin-top: 0; padding: 48px 0 32px; background: var(--q-ink); color: #c9dae0; font-size: 15px; }
-.q-footer a { color: #e6f0f3 !important; text-decoration: none; }
-.q-footer a:hover { text-decoration: underline; }
-.q-foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
-.q-foot-grid h3 { margin: 0 0 12px; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: #fff; }
-.q-foot-grid ul { list-style: none; margin: 0; padding: 0; }
-.q-foot-grid li { margin: 6px 0; }
-.q-foot-brand { font-size: 20px; font-weight: 700; color: #fff; }
-.q-foot-brand b { color: #7fd3c0; }
-.q-foot-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; color: #9fb7c0; }
-@media (max-width: 720px) { .q-foot-grid { grid-template-columns: 1fr; } }
-    </style>
+<meta name="theme-color" content="#ffffff">
+<link rel="preload" href="/assets/fonts/PlusJakartaSans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 <div id="intro" aria-hidden="true"><button class="skip" type="button">Skip</button></div>
 <div id="iname" aria-hidden="true">Arakees</div>
 <div id="planet" aria-hidden="true"><canvas></canvas></div>
-<div id="wrap">
-            <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [
-  {"@type": "WebSite", "name": "Arakees", "alternateName": ["Arakees CRM", "arakees.com", "Arakees", "Quansi", "Quansi Odoo", "arakees.com"], "url": "https://www.arakees.com/", "inLanguage": "en"},
-  {"@type": "SoftwareApplication", "name": "Arakees", "alternateName": ["Arakees CRM", "Arakees"], "applicationCategory": "BusinessApplication", "operatingSystem": "Web browser", "url": "https://www.arakees.com/", "inLanguage": "en",
-   "description": "The all-in-one platform for independent consultants: website, online booking, client portal, proposals and invoicing, under your own brand."}]}</script>
-    
-    
-    <header class="q-header q-site">
-        <div class="q-wrap">
-            <a class="q-logo" href="/"><img src="/assets/arakees-mark-128.png" alt="" width="32" height="32" loading="lazy"/><span>Arakees</span></a>
-            <nav class="q-nav" aria-label="Main navigation">
-                <a href="/#fonctionnalites">Features</a>
-                <a href="/#pour-qui">Who it's for</a>
-                <a href="/#methode">How it works</a>
-                <a href="/#faq">FAQ</a>
-            </nav>
-            <a class="q-btn" href="/#inscription">Join the waiting list</a>
-        </div>
-    </header>
-            
-            <div class="q-site">
-                <section class="q-hero" id="inscription">
-                    <div class="q-wrap">
-                        <div>
-                            <span class="q-tag">Coming soon</span>
-                            <h1>Spend your time on clients.<br>Not on admin.</h1>
-                            <p class="q-lead">Arakees is the all-in-one platform for independent consultants: your website, online booking, client portal, proposals and invoicing, under your own brand. One login instead of four tools.</p>
-                            <p class="q-form"><a class="q-btn" href="mailto:contact@arakees.com?subject=Arakees%20waiting%20list&amp;body=Hello%2C%20please%20let%20me%20know%20when%20Arakees%20launches.">Join the waiting list</a></p>
-                            <p class="q-note" id="qc-note">Email us at <a href="mailto:contact@arakees.com">contact@arakees.com</a>. One email when we launch, nothing else. <a href="/privacy">Privacy</a></p>
-                            <p class="q-msg" id="qc-msg" role="status" aria-live="polite"></p>
-                        </div>
-                    </div>
-                </section>
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Arakees home"><img src="/assets/arakees-mark-128.png" alt="" width="34" height="34"><span>Arakees</span></a>
+    <nav class="nav" aria-label="Main navigation"><a href="/product">Product</a><a href="/solutions">Solutions</a><a href="/care">Care</a><a href="/how-it-works">How it works</a><a href="/contact">Contact</a></nav>
+    <a class="btn btn-primary btn-sm" href="mailto:contact@arakees.com?subject=Arakees%20waiting%20list&amp;body=Hello%2C%20please%20let%20me%20know%20when%20Arakees%20launches.">Join the waiting list</a>
+  </div>
+</header>
+<main>
+<section class="hero center">
+  <div class="wrap">
+    <span class="eyebrow">Coming soon<span class="hide-sm">· Built for independent consultants</span></span>
+    <h1>Spend your time on clients.<br><span class="accent">Not on admin.</span></h1>
+    <p class="lead">Your website, online booking, client portal, proposals and invoicing, in one platform under your own brand. One login instead of a pile of tools.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="mailto:contact@arakees.com?subject=Arakees%20waiting%20list&amp;body=Hello%2C%20please%20let%20me%20know%20when%20Arakees%20launches.">Join the waiting list</a>
+      <a class="btn btn-ghost" href="/product">Explore the product →</a>
+    </div>
+    <p class="note">One email when we launch, nothing else. <a href="/privacy">Privacy</a></p>
+    <div class="stage">
+      <div class="chip c1"><span class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5 9-11"/></svg></span><span><b>Proposal signed</b><small>Signed online by your client</small></span></div>
+      <div class="chip c2"><span class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></span><span><b>Invoice paid</b><small>Paid online, marked automatically</small></span></div>
+      <div class="frame" id="heroFrame">
+        <div class="bar"><i></i><i></i><i></i><span>yourbrand.com/admin</span><em class="fict">Fictitious data</em></div>
+        <img src="/assets/shots/dashboard.webp?v=4" alt="Arakees dashboard showing revenue, active clients, open proposals and invoices" width="1800" height="1125" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
 
-                <section class="q-sec" id="pourquoi">
-                    <div class="q-wrap">
-                        <h2>Four tools. One platform. Zero copy-paste.</h2>
-                        <p class="q-intro">A booking app, an invoicing tool, a shared drive and a website that never talk to each other. Every new client means typing the same details four times. Arakees connects it all, so every client, session and invoice lives in one place.</p>
-                        <ul class="q-grid3">
-                            <li class="q-card"><h3>Your brand, everywhere</h3><p>Your domain, your logo, your colours. Your clients see your business.</p></li>
-                            <li class="q-card"><h3>Always know where you stand</h3><p>Revenue, proposals waiting for an answer, invoices overdue. One glance, every morning.</p></li>
-                            <li class="q-card"><h3>Built from real consulting work</h3><p>Arakees started as the platform of a working leadership consultant, shaped by real client work.</p></li>
-                        </ul>
-                    </div>
-                </section>
+<section class="replace">
+  <div class="wrap">
+    <p class="k">One platform replaces</p>
+    <div class="tools rv"><span>A booking tool</span><span>An invoicing tool</span><span>A shared drive</span><span>A separate website</span><strong>Arakees</strong></div>
+  </div>
+</section>
 
-                <section class="q-sec alt" id="fonctionnalites">
-                    <div class="q-wrap">
-                        <h2>Win clients. Serve them well. Get paid.</h2>
-                        <p class="q-intro">Everything an independent practice runs on, built to work together from day one.</p>
-                        <ul class="q-grid4">
-                            <li class="q-card"><h3>Dashboard</h3><p>Revenue, goals, unpaid invoices.</p></li>
-                            <li class="q-card"><h3>Sales</h3><p>Leads, pipeline, activities, proposals, messaging.</p></li>
-                            <li class="q-card"><h3>Calendar</h3><p>Online booking, discovery calls, working hours.</p></li>
-                            <li class="q-card"><h3>Billing</h3><p>Invoices, services and rates, online payment.</p></li>
-                            <li class="q-card"><h3>Client portal</h3><p>Resources, session pages, recordings, questionnaires.</p></li>
-                            <li class="q-card"><h3>Website</h3><p>Your pages, your services, your emails.</p></li>
-                            <li class="q-card"><h3>Support</h3><p>Client tickets.</p></li>
-                            <li class="q-card"><h3>Team and tools</h3><p>Team, calendar sync, e-signature.</p></li>
-                        </ul>
-                    </div>
-                </section>
+<section class="tour" id="tour">
+  <div class="wrap center">
+    <span class="eyebrow">Product tour</span>
+    <h2 class="h2">Everything your practice runs on, <span class="accent">connected</span></h2>
+    <p class="lead">Every client, session, proposal and invoice lives in one place. No copy-paste between tools.</p>
+    <div class="tabs" role="tablist" aria-label="Product tour"><button class="tab" role="tab" aria-selected="true" data-t="0">Dashboard</button><button class="tab" role="tab" aria-selected="false" data-t="1">Pipeline</button><button class="tab" role="tab" aria-selected="false" data-t="2">Proposals</button><button class="tab" role="tab" aria-selected="false" data-t="3">Invoices</button><button class="tab" role="tab" aria-selected="false" data-t="4">Calendar</button></div>
+  </div>
+  <div class="wrap">
+    <div class="panel" role="tabpanel" style="text-align:left">
+      <div><h3 id="tTitle"></h3><ul id="tList"></ul><p style="margin-top:26px"><a class="btn btn-ghost btn-sm" href="/product">See every module →</a></p></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><span id="tUrl">yourbrand.com/admin</span><em class="fict">Fictitious data</em></div><img id="tImg" src="/assets/shots/dashboard.webp?v=4" alt="" width="1800" height="1125" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 
-                <section class="q-sec" id="pour-qui">
-                    <div class="q-wrap">
-                        <h2>Made for people who sell their expertise</h2>
-                        <p class="q-intro">If your clients pay for your time and your thinking, Arakees was built for you.</p>
-                        <ul class="q-grid4">
-                            <li class="q-card"><h3>Consultants</h3><p>Send proposals, run engagements and invoice without a single spreadsheet.</p></li>
-                            <li class="q-card"><h3>Coaches</h3><p>Let clients book their own sessions, then follow up in one shared space.</p></li>
-                            <li class="q-card"><h3>Trainers</h3><p>Share workshop resources and collect feedback after every session.</p></li>
-                            <li class="q-card"><h3>Independent advisors</h3><p>Any expertise sold to professional clients, run like a real business.</p></li>
-                        </ul>
-                    </div>
-                </section>
+<section>
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Features</span><h2 class="h2">Win clients. Serve them well. Get paid.</h2><p class="lead">Every module, built to work together from day one.</p></div>
+    <div class="grid4"><a class="card rv" href="/product#dashboard" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Dashboard</h3><p>Revenue, goals, unpaid invoices.</p></a><a class="card rv" href="/product#sales" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><h3>Sales</h3><p>Leads, pipeline, activities, proposals, messaging.</p></a><a class="card rv" href="/product#calendar" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></div><h3>Calendar</h3><p>Online booking, discovery calls, working hours.</p></a><a class="card rv" href="/product#billing" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div><h3>Billing</h3><p>Invoices, services and rates, online payment.</p></a><a class="card rv" href="/product#portal" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><h3>Client portal</h3><p>Resources, session pages, recordings, questionnaires.</p></a><a class="card rv" href="/product#website" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div><h3>Website</h3><p>Your pages, your services, your emails.</p></a><a class="card rv" href="/product#support" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13a8 8 0 0116 0v4a2 2 0 01-2 2h-1v-6h3M4 13v4a2 2 0 002 2h1v-6H4"/></svg></div><h3>Support</h3><p>Client tickets.</p></a><a class="card rv" href="/product#team" style="text-decoration:none"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.8-3.5 3.2-5 6-5s5.2 1.5 6 5M15 15c2.5 0 4.5 1.2 5.5 4"/></svg></div><h3>Team and tools</h3><p>Team, calendar sync, e-signature.</p></a></div>
+  </div>
+</section>
 
-                <section class="q-sec alt" id="methode">
-                    <div class="q-wrap">
-                        <h2>We set it up. You get to work.</h2>
-                        <p class="q-intro">No software to learn on a Sunday night. Your platform arrives ready to use.</p>
-                        <ol class="q-grid3" style="list-style:none">
-                            <li class="q-card"><span class="q-num">1</span><h3>Tell us how you work</h3><p>Your offer, your clients, your way of running sessions and billing.</p></li>
-                            <li class="q-card"><span class="q-num">2</span><h3>We build it in your brand</h3><p>Your copy, services, hours and invoicing, configured for you.</p></li>
-                            <li class="q-card"><span class="q-num">3</span><h3>Go live, with us beside you</h3><p>Your platform is ready on day one, and we keep improving it with you.</p></li>
-                        </ol>
-                    </div>
-                </section>
+<section class="soft">
+  <div class="wrap split">
+    <div class="rv">
+      <span class="eyebrow">Your brand</span>
+      <h2 class="h2">Your clients see your business. Not ours.</h2>
+      <p class="lead">Arakees is delivered in your brand, at your address. Your clients book, sign and pay on a site that is unmistakably yours.</p>
+      <ul class="checks"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>Your domain.</b> Website and client portal at your own address.</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>Your logo and colours.</b> On every page, every email, every invoice.</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>Your words.</b> Edit your own pages, no developer needed.</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>English and French.</b> Serve clients in their language.</span></li></ul>
+    </div>
+    <div class="frame rv"><div class="bar"><i></i><i></i><i></i><span>yourbrand.com</span><em class="fict">Fictitious data</em></div><img src="/assets/shots/site.webp?v=4" alt="A consultant’s public website built on Arakees" width="1800" height="900" loading="lazy"></div>
+  </div>
+</section>
 
-                <section class="q-sec" id="faq">
-                    <div class="q-wrap q-faq">
-                        <h2>Questions, answered</h2>
-                        <details><summary>When can I start?</summary><p>Arakees opens soon. People on the waiting list hear about it first.</p></details>
-                        <details><summary>How much does it cost?</summary><p>Pricing will be published at launch, and sent to the waiting list first.</p></details>
-                        <details><summary>Do I need technical skills?</summary><p>No. We set up your platform for you, and you edit your own pages without a developer.</p></details>
-                        <details><summary>Can I use my own domain name?</summary><p>Yes. Your website and client portal live at your own address, with your logo and colours.</p></details>
-                        <details><summary>Which tools does Arakees replace?</summary><p>Usually a booking tool, an invoicing tool, a document-sharing space and a separate website.</p></details>
-                    </div>
-                </section>
+<section>
+  <div class="wrap split">
+    <div class="rv" style="order:2">
+      <span class="eyebrow">Arakees Care</span>
+      <h2 class="h2">Always on. Always protected.</h2>
+      <p class="lead">We run your platform, secure it and look after it, so you never have to think about servers.</p>
+      <ul class="checks"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>Availability.</b> Redundant hosting in the EU, monitored around the clock.</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>Security.</b> Updates and encrypted backups with two providers.</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>Confidentiality.</b> Your data is isolated, never sold, always exportable.</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg><span><b>A real person.</b> Personal follow-up and regular check-ins.</span></li></ul>
+      <p style="margin-top:26px"><a class="btn btn-ghost btn-sm" href="/care">Discover Arakees Care →</a></p>
+    </div>
+    <div class="grid2 rv" style="margin:0">
+      <div class="care"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="5"/></svg></div><div><h3>Availability</h3></div></div><div class="care"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></div><div><h3>Security</h3></div></div><div class="care"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div><div><h3>Confidentiality</h3></div></div><div class="care"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a8 8 0 01-11.7 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></div><div><h3>Follow-up</h3></div></div>
+    </div>
+  </div>
+</section>
 
-                <section class="q-cta">
-                    <div class="q-wrap">
-                        <h2>Get your time back.</h2>
-                        <p>Join the waiting list and be the first to run your practice on Arakees.</p>
-                        <a class="q-btn" href="mailto:contact@arakees.com?subject=Arakees%20waiting%20list&amp;body=Hello%2C%20please%20let%20me%20know%20when%20Arakees%20launches.">Join the waiting list</a>
-                    </div>
-                </section>
-            </div>
-    
-    
-    <footer class="q-footer q-site">
-        <div class="q-wrap">
-            <div class="q-foot-grid">
-                <div>
-                    <div class="q-foot-brand">Arakees</div>
-                    <p>The all-in-one platform for independent consultants.</p>
-                </div>
-                <div>
-                    <h3>Product</h3>
-                    <ul>
-                        <li><a href="/#fonctionnalites">Features</a></li>
-                        <li><a href="/#pour-qui">Who it's for</a></li>
-                        <li><a href="/#methode">How it works</a></li>
-                        <li><a href="/#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Information</h3>
-                    <ul>
-                        <li><a href="mailto:contact@arakees.com">Contact</a></li>
-                        <li><a href="/mentions-legales">Legal notice</a></li>
-                        <li><a href="/privacy">Privacy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="q-foot-bottom">© 2026 Arakees</div>
-        </div>
-    </footer>
-            
-        </div>
-    
-        <div id="o_shared_blocks" class="oe_unremovable"></div>
-<script type="module">
-import { createPlanet } from '/assets/planet.js';
-const intro = document.getElementById('intro'), holder = document.getElementById('planet'), iname = document.getElementById('iname');
-const logo = document.querySelector('.q-header .q-logo img'), word = document.querySelector('.q-header .q-logo span');
-const planet = createPlanet(holder.querySelector('canvas'), 400);
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let seen = false; try { seen = sessionStorage.getItem('arakees.intro') === '1'; } catch {}
-const BIG = 400, tr = (x, y, size) => `translate(${x}px, ${y}px) scale(${size / BIG})`;
-function dock() {
-  logo.replaceWith(holder.querySelector('canvas'));
-  planet.resize(32); // rendered at logo size: sharp, no pixel shimmer
-  holder.remove(); iname.remove();
-  document.documentElement.classList.remove('intro-on');
-  intro.classList.add('gone');
-  setTimeout(() => intro.remove(), 700);
-  try { sessionStorage.setItem('arakees.intro', '1'); } catch {}
-}
-// without WebGL2, or if the texture takes over 2.5 s, keep the PNG logo and skip the intro
-function fallback() {
-  holder.remove(); iname.remove(); intro.remove();
-  document.documentElement.classList.remove('intro-on');
-}
-const ready = Promise.race([planet.ready, new Promise((_, ko) => setTimeout(() => ko(new Error('lent')), 2500))]);
-if (reduce || seen) { intro.remove(); iname.remove(); } // no white screen for visitors who already saw the intro
-if (reduce || seen) ready.then(() => { if (!reduce) planet.start(); dock(); }, fallback);
-else ready.then(runIntro, fallback);
-function runIntro() {
-  document.documentElement.classList.add('intro-on');
-  planet.start();
-  let skipped = false;
-  const D = ms => (skipped ? 1 : ms), wait = ms => new Promise(r => setTimeout(r, skipped ? 0 : ms));
-  intro.addEventListener('click', () => { skipped = true; [holder, iname].forEach(el => el.getAnimations().forEach(a => a.finish())); });
-  const opt = ms => ({ duration: D(ms), easing: 'cubic-bezier(.45,0,.2,1)', fill: 'forwards' });
-  (async () => {
-    const s = Math.min(BIG, innerWidth * 0.6, innerHeight * 0.45), cx = innerWidth / 2 - s / 2, cy = innerHeight / 2 - s / 2;
-    const a = tr(cx, cy, s);
-    await holder.animate([{ transform: tr(cx, cy + 30, s * .7), opacity: 0 }, { transform: a, opacity: 1 }], opt(800)).finished;
-    await wait(150);
-    // the planet moves left (above the name on mobile) and makes room for the name
-    const k = s * .3, narrow = innerWidth < 760;
-    const b = narrow ? tr(innerWidth / 2 - k / 2, innerHeight / 2 - k - 70, k) : tr(innerWidth / 2 - iname.offsetWidth / 2 - k - 28, innerHeight / 2 - k / 2, k);
-    iname.classList.add('on');
-    await holder.animate([{ transform: a, opacity: 1 }, { transform: b, opacity: 1 }], opt(700)).finished;
-    await wait(550);
-    // then planet and name dock together top-left while the backdrop fades
-    const r = logo.getBoundingClientRect(), n0 = iname.getBoundingClientRect(), n1 = word.getBoundingClientRect();
-    const sc = parseFloat(getComputedStyle(word).fontSize) / parseFloat(getComputedStyle(iname).fontSize);
-    const from = `translate(${n0.left}px, ${n0.top}px) scale(1)`;
-    const to = `translate(${n1.left}px, ${n1.top + n1.height / 2 - n0.height * sc / 2}px) scale(${sc})`;
-    Object.assign(iname.style, { left: 0, top: 0, transform: from });
-    intro.classList.add('gone');
-    await Promise.all([
-      holder.animate([{ transform: b }, { transform: tr(r.left, r.top, r.width) }], opt(750)).finished,
-      iname.animate([{ transform: from }, { transform: to }], opt(750)).finished,
-    ]);
-    dock();
-  })();
-}
+<section class="soft">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">How it works</span><h2 class="h2">We set it up. You get to work.</h2><p class="lead">No software to learn on a Sunday night. Your platform arrives ready to use.</p></div>
+    <div class="steps">
+      <div class="step rv"><h3>Tell us how you work</h3><p>Your offer, your clients, your way of running sessions and billing.</p></div>
+      <div class="step rv"><h3>We build it in your brand</h3><p>Your copy, services, hours and invoicing, configured for you.</p></div>
+      <div class="step rv"><h3>Go live, with us beside you</h3><p>Your platform is ready on day one, and we keep improving it with you.</p></div>
+    </div>
+    <div class="next"><a class="btn btn-ghost" href="/how-it-works">How it works in detail →</a></div>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="box rv">
+      <h2>Get your time back.</h2>
+      <p>Join the waiting list and be the first to run your practice on Arakees.</p>
+      <a class="btn btn-primary" href="mailto:contact@arakees.com?subject=Arakees%20waiting%20list&amp;body=Hello%2C%20please%20let%20me%20know%20when%20Arakees%20launches.">Join the waiting list</a>
+    </div>
+  </div>
+</section>
+<script>(function(){const T=[["Your business at a glance", "dashboard", "admin", ["Revenue this quarter and over time", "Active clients and sessions this month", "Open proposals and pipeline value", "Invoices paid, sent and overdue"]], ["A pipeline you can actually read", "pipeline", "admin/pipeline", ["Every deal from qualification to won", "Open and weighted pipeline value", "Monthly target tracking", "Kanban or list view"]], ["Proposals that close themselves", "proposals", "admin/proposals", ["From intake form to drafted proposal", "Sent as a link, with opens tracked", "Signed electronically by your client", "Turned into an invoice automatically"]], ["Invoices that get paid", "invoices", "admin/invoices", ["Paid, outstanding and overdue at a glance", "One template for every client", "Online payment", "Clear status on every invoice"]], ["A calendar that fills itself", "calendar", "admin/calendar", ["Clients book within your availability", "Discovery calls, sessions and workshops", "Month and day views", "Sync with your calendar"]]];
+const tabs=document.querySelectorAll('.tab'),img=document.getElementById('tImg');
+function show(i){const [title,shot,url,items]=T[i];tabs.forEach((t,j)=>t.setAttribute('aria-selected',String(i===j)));
+document.getElementById('tTitle').textContent=title;document.getElementById('tUrl').textContent='yourbrand.com/'+url;
+document.getElementById('tList').innerHTML=items.map(x=>'<li>'+x+'</li>').join('');img.style.opacity=0;
+setTimeout(()=>{img.src='/assets/shots/'+shot+'.webp?v=4';img.alt='Arakees '+shot+' screen';img.onload=()=>{img.style.opacity=1;};},180);}
+tabs.forEach(t=>t.addEventListener('click',()=>show(+t.dataset.t)));show(0);T.forEach(t=>{const p=new Image();p.src='/assets/shots/'+t[1]+'.webp?v=4';});})();</script>
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand" href="/"><img src="/assets/arakees-mark-128.png" alt="" width="34" height="34"><span>Arakees</span></a><p>The all-in-one platform for independent consultants.</p></div>
+      <div><h4>Product</h4><ul><li><a href="/product">Product</a></li><li><a href="/solutions">Solutions</a></li><li><a href="/care">Arakees Care</a></li><li><a href="/how-it-works">How it works</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/contact">Contact</a></li><li><a href="/mentions-legales">Legal notice</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
+    </div>
+    <p class="copy">© 2026 Arakees · Product screenshots show fictitious demo data.</p>
+  </div>
+</footer>
+<script>
+(function () {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  const hdr = document.getElementById('hdr'), frame = document.getElementById('heroFrame');
+  const onScroll = () => { hdr.classList.toggle('scrolled', scrollY > 8); if (frame) frame.style.setProperty('--tilt', Math.max(0, 10 - scrollY / 40) + 'deg'); };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
 </script>
+<script type="module" src="/assets/intro.js"></script>
 </body>
 </html>

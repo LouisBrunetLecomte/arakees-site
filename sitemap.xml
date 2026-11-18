@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.arakees.com/</loc><lastmod>2026-11-18</lastmod><priority>1.0</priority></url>
-  <url><loc>https://www.arakees.com/privacy</loc><lastmod>2026-11-18</lastmod><priority>0.3</priority></url>
-  <url><loc>https://www.arakees.com/mentions-legales</loc><lastmod>2026-11-18</lastmod><priority>0.3</priority></url>
+  <url><loc>https://www.arakees.com/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://www.arakees.com/product</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://www.arakees.com/solutions</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://www.arakees.com/care</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://www.arakees.com/how-it-works</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://www.arakees.com/contact</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://www.arakees.com/privacy</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://www.arakees.com/mentions-legales</loc><lastmod>2026-11-18</lastmod></url>
 </urlset>
