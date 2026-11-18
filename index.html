@@ -20,6 +20,17 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.5;color:#1b2a33;background:#fff}
 img{max-width:100%;height:auto}
 a{color:inherit}
+
+/* Ouverture : la planète apparaît, tourne vers la gauche, laisse place au nom puis se range dans le logo */
+#intro { position: fixed; inset: 0; z-index: 200; background: var(--q-bg); display: grid; place-items: center; transition: opacity .6s ease; }
+#intro.gone { opacity: 0; pointer-events: none; }
+#iname { position: fixed; left: 50%; top: 50%; z-index: 210; transform: translate(-50%, -50%); transform-origin: 0 0; white-space: nowrap; line-height: 1; font-weight: 700; font-size: clamp(36px, 8vw, 72px); color: var(--q-ink); opacity: 0; transition: opacity .5s ease; pointer-events: none; will-change: transform; }
+#iname.on { opacity: 1; }
+html.intro-on .q-header .q-logo { visibility: hidden; }
+#intro .skip { position: absolute; right: 16px; bottom: 16px; background: none; border: 1px solid var(--q-line); border-radius: 99px; padding: 8px 14px; color: var(--q-muted); font: inherit; font-size: 14px; cursor: pointer; }
+#planet { position: fixed; left: 0; top: 0; z-index: 210; width: 400px; height: 400px; transform-origin: 0 0; opacity: 0; pointer-events: none; will-change: transform, opacity; }
+#planet canvas, .q-logo canvas { width: 100%; height: 100%; display: block; }
+.q-logo canvas { width: 32px; height: 32px; }
 </style>
 <style>
 :root { --q-ink: #0f2a37; --q-text: #33505d; --q-muted: #6a8692; --q-line: #dde8ec; --q-bg: #ffffff; --q-soft: #f4f8f9; --q-brand: #1f5f7a; --q-brand-2: #2f6f8f; --q-mint: #3fb39a; }
@@ -94,6 +105,9 @@ a{color:inherit}
     </style>
 </head>
 <body>
+<div id="intro" aria-hidden="true"><button class="skip" type="button">Passer</button></div>
+<div id="iname" aria-hidden="true">Arakees</div>
+<div id="planet" aria-hidden="true"><canvas></canvas></div>
 <div id="wrap">
             <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [
   {"@type": "WebSite", "name": "Arakees", "alternateName": ["Arakees CRM", "arakees.com", "Arakees", "Quansi", "Quansi Odoo", "arakees.com"], "url": "https://www.arakees.com/", "inLanguage": "fr-FR"},
@@ -220,5 +234,64 @@ a{color:inherit}
         </div>
     
         <div id="o_shared_blocks" class="oe_unremovable"></div>
+<script type="module">
+import { createPlanet } from '/assets/planet.js';
+const intro = document.getElementById('intro'), holder = document.getElementById('planet'), iname = document.getElementById('iname');
+const logo = document.querySelector('.q-header .q-logo img'), word = document.querySelector('.q-header .q-logo span');
+const planet = createPlanet(holder.querySelector('canvas'), 400);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let seen = false; try { seen = sessionStorage.getItem('arakees.intro') === '1'; } catch {}
+const BIG = 400, tr = (x, y, size) => `translate(${x}px, ${y}px) scale(${size / BIG})`;
+function dock() {
+  logo.replaceWith(holder.querySelector('canvas'));
+  planet.resize(32); // calculée à la taille du logo : net, sans pixels
+  holder.remove(); iname.remove();
+  document.documentElement.classList.remove('intro-on');
+  intro.classList.add('gone');
+  setTimeout(() => intro.remove(), 700);
+  try { sessionStorage.setItem('arakees.intro', '1'); } catch {}
+}
+// sans WebGL2 ou si la texture tarde (> 2,5 s), on garde le logo PNG et on saute l'intro
+function fallback() {
+  holder.remove(); iname.remove(); intro.remove();
+  document.documentElement.classList.remove('intro-on');
+}
+const ready = Promise.race([planet.ready, new Promise((_, ko) => setTimeout(() => ko(new Error('lent')), 2500))]);
+if (reduce || seen) { intro.remove(); iname.remove(); } // pas d'écran blanc pour qui a déjà vu l'intro
+if (reduce || seen) ready.then(() => { if (!reduce) planet.start(); dock(); }, fallback);
+else ready.then(runIntro, fallback);
+function runIntro() {
+  document.documentElement.classList.add('intro-on');
+  planet.start();
+  let skipped = false;
+  const D = ms => (skipped ? 1 : ms), wait = ms => new Promise(r => setTimeout(r, skipped ? 0 : ms));
+  intro.addEventListener('click', () => { skipped = true; [holder, iname].forEach(el => el.getAnimations().forEach(a => a.finish())); });
+  const opt = ms => ({ duration: D(ms), easing: 'cubic-bezier(.45,0,.2,1)', fill: 'forwards' });
+  (async () => {
+    const s = Math.min(BIG, innerWidth * 0.6, innerHeight * 0.45), cx = innerWidth / 2 - s / 2, cy = innerHeight / 2 - s / 2;
+    const a = tr(cx, cy, s);
+    await holder.animate([{ transform: tr(cx, cy + 30, s * .7), opacity: 0 }, { transform: a, opacity: 1 }], opt(800)).finished;
+    await wait(150);
+    // la planète part vers la gauche (au-dessus du nom sur mobile) et laisse place au nom
+    const k = s * .3, narrow = innerWidth < 760;
+    const b = narrow ? tr(innerWidth / 2 - k / 2, innerHeight / 2 - k - 70, k) : tr(innerWidth / 2 - iname.offsetWidth / 2 - k - 28, innerHeight / 2 - k / 2, k);
+    iname.classList.add('on');
+    await holder.animate([{ transform: a, opacity: 1 }, { transform: b, opacity: 1 }], opt(700)).finished;
+    await wait(550);
+    // puis planète et nom se rangent ensemble en haut à gauche, le fond s'efface en même temps
+    const r = logo.getBoundingClientRect(), n0 = iname.getBoundingClientRect(), n1 = word.getBoundingClientRect();
+    const sc = parseFloat(getComputedStyle(word).fontSize) / parseFloat(getComputedStyle(iname).fontSize);
+    const from = `translate(${n0.left}px, ${n0.top}px) scale(1)`;
+    const to = `translate(${n1.left}px, ${n1.top + n1.height / 2 - n0.height * sc / 2}px) scale(${sc})`;
+    Object.assign(iname.style, { left: 0, top: 0, transform: from });
+    intro.classList.add('gone');
+    await Promise.all([
+      holder.animate([{ transform: b }, { transform: tr(r.left, r.top, r.width) }], opt(750)).finished,
+      iname.animate([{ transform: from }, { transform: to }], opt(750)).finished,
+    ]);
+    dock();
+  })();
+}
+</script>
 </body>
 </html>
