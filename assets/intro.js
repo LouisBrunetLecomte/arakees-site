@@ -19,7 +19,7 @@ function dock() {
 }
 // without WebGL2, or if the texture takes over 2.5 s, keep the PNG logo and skip the intro
 function fallback() { holder.remove(); iname.remove(); intro.remove(); document.documentElement.classList.remove('intro-on'); }
-const ready = Promise.race([planet.ready, new Promise((_, ko) => setTimeout(() => ko(new Error('slow')), 2500))]);
+const ready = Promise.race([planet.ready, new Promise((_, ko) => setTimeout(() => ko(new Error('slow')), 3500))]);
 if (reduce || seen) { intro.remove(); iname.remove(); } // no white screen for visitors who already saw the intro
 if (reduce || seen) ready.then(() => { if (!reduce) planet.start(); dock(); }, fallback);
 else { document.documentElement.classList.add('intro-on'); ready.then(runIntro, fallback); }

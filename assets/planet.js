@@ -70,7 +70,8 @@ export function createPlanet(canvas, cssSize = 400) {
   const ready = (async () => {
     if (!gl) throw new Error('WebGL2 indisponible');
     const base = new URL('.', import.meta.url);
-    const [surf, cloud] = await Promise.all([load(new URL('planet-4k.webp', base)), load(new URL('planet-clouds.webp', base))]);
+    // light 2K textures first (fast first paint), full 4K swapped in once downloaded
+    const [surf, cloud] = await Promise.all([load(new URL('planet-2k.webp', base)), load(new URL('planet-clouds-1k.webp', base))]);
     const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
     const prog = gl.createProgram();
     gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
@@ -80,16 +81,25 @@ export function createPlanet(canvas, cssSize = 400) {
     const loc = gl.getAttribLocation(prog, 'p');
     gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const aniso = gl.getExtension('EXT_texture_filter_anisotropic');
-    [surf, cloud].forEach((im, i) => {
+    const texs = [surf, cloud].map((im, i) => {
+      const t = gl.createTexture();
       gl.activeTexture(gl.TEXTURE0 + i);
-      gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+      gl.bindTexture(gl.TEXTURE_2D, t);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, im);
       gl.generateMipmap(gl.TEXTURE_2D);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       if (aniso) gl.texParameterf(gl.TEXTURE_2D, aniso.TEXTURE_MAX_ANISOTROPY_EXT, 8);
+      return t;
     });
+    Promise.all([load(new URL('planet-4k.webp', base)), load(new URL('planet-clouds.webp', base))]).then(full => full.forEach((im, i) => {
+      gl.activeTexture(gl.TEXTURE0 + i);
+      gl.bindTexture(gl.TEXTURE_2D, texs[i]);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, im);
+      gl.generateMipmap(gl.TEXTURE_2D);
+      draw(0);
+    }), () => {});
     gl.uniform1i(gl.getUniformLocation(prog, 'surf'), 0);
     gl.uniform1i(gl.getUniformLocation(prog, 'cloud'), 1);
     uPx = gl.getUniformLocation(prog, 'px');
