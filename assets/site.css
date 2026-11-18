@@ -239,3 +239,46 @@ html.intro-on .hdr .brand { visibility: hidden; }
 .frame .bar em.fict { margin-left: auto; font-style: normal; font-size: 11.5px; font-weight: 600; color: var(--muted); background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 2px 10px; white-space: nowrap; }
 .panel .frame .bar em.fict { background: #0f2632; border-color: rgba(255,255,255,.08); color: #8aa3ae; }
 .disclaimer { text-align: center; font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+
+/* Key moments: floating cards and live feed */
+.chip { transition: opacity .35s ease, transform .35s ease; min-width: 270px; }
+.chip.out { opacity: 0; transform: translateY(8px) scale(.98); }
+.chip .ni, .nt .ni { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--mint-soft); color: #1e7a68; flex: none; margin: 0; }
+.chip .ni svg, .nt .ni svg { width: 18px; height: 18px; }
+.chip > div:last-child, .nt > div:last-child { display: flex; flex-direction: column; text-align: left; }
+.chip b, .nt b { font-size: 15px; color: var(--ink); }
+.chip small, .nt small { color: var(--muted); font-size: 12.5px; }
+.moments { padding-top: 60px; }
+.feedcard { border-radius: 22px; border: 1px solid var(--line); background: linear-gradient(180deg, #fff, var(--soft)); padding: 22px; box-shadow: var(--shadow); }
+.feedhead { display: flex; align-items: center; gap: 10px; font-weight: 650; color: var(--ink); font-size: 15px; padding: 4px 6px 16px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.feedhead .fict { margin-left: auto; font-style: normal; font-size: 11.5px; font-weight: 600; color: var(--muted); background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 2px 10px; }
+.live { width: 9px; height: 9px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 0 rgba(47,179,154,.5); animation: live 1.8s infinite; }
+@keyframes live { 70% { box-shadow: 0 0 0 9px rgba(47,179,154,0); } 100% { box-shadow: 0 0 0 0 rgba(47,179,154,0); } }
+#feed { display: grid; gap: 10px; min-height: 420px; align-content: start; }
+.nt.f { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 14px; background: #fff; border: 1px solid var(--line); opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .55s cubic-bezier(.16,1,.3,1); }
+.nt.f.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .nt.f { opacity: 1; transform: none; } }
+
+/* Static key moments around the hero dashboard (override earlier floating chips) */
+.stage { max-width: 1000px; }
+.chip { animation: none !important; transition: none; min-width: 0; width: 290px; padding: 12px 14px; }
+.chip.c1, .chip.c2 { display: none; }
+.chips .chip { position: absolute; z-index: 3; }
+.chips .p1 { left: -190px; top: 6%; }
+.chips .p2 { left: -230px; top: 37%; }
+.chips .p3 { left: -170px; top: 68%; }
+.chips .p4 { right: -190px; top: 12%; }
+.chips .p5 { right: -230px; top: 43%; }
+.chips .p6 { right: -170px; top: 74%; }
+.nt.f { opacity: 1; transform: none; }
+#feed { min-height: 0; }
+@media (max-width: 1500px) {
+  .chips .p1, .chips .p3 { left: -120px; } .chips .p2 { left: -150px; }
+  .chips .p4, .chips .p6 { right: -120px; } .chips .p5 { right: -150px; }
+}
+@media (max-width: 1280px) {
+  .chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+  .chips .chip { position: static; width: auto; display: flex; }
+  .stage .chips { order: 2; }
+}
+@media (max-width: 720px) { .chips { grid-template-columns: 1fr; } }
