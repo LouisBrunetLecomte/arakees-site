@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arakees · Site, rendez-vous, propositions et factures pour consultants · Bientôt disponible</title>
-<meta name="description" content="Arakees réunit le site, la prise de rendez-vous, l’espace client, les propositions et la facturation des consultants et coachs indépendants. Bientôt disponible : inscrivez-vous pour être prévenu.">
+<title>Arakees · Website, booking, proposals and invoicing for consultants · Coming soon</title>
+<meta name="description" content="Arakees brings together the website, booking, client portal, proposals and invoicing for independent consultants and coaches. Coming soon: sign up to be notified.">
 <link rel="canonical" href="https://www.arakees.com/">
 <link rel="icon" type="image/png" href="/assets/arakees-mark-128.png">
 <link rel="apple-touch-icon" href="/assets/arakees-mark-512.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Arakees · Site, rendez-vous, propositions et factures pour consultants · Bientôt disponible">
-<meta property="og:description" content="Arakees réunit le site, la prise de rendez-vous, l’espace client, les propositions et la facturation des consultants et coachs indépendants. Bientôt disponible : inscrivez-vous pour être prévenu.">
+<meta property="og:title" content="Arakees · Website, booking, proposals and invoicing for consultants · Coming soon">
+<meta property="og:description" content="Arakees brings together the website, booking, client portal, proposals and invoicing for independent consultants and coaches. Coming soon: sign up to be notified.">
 <meta property="og:url" content="https://www.arakees.com/">
 <meta property="og:image" content="https://www.arakees.com/assets/og-arakees.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,7 +21,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"He
 img{max-width:100%;height:auto}
 a{color:inherit}
 
-/* Ouverture : la planète apparaît, tourne vers la gauche, laisse place au nom puis se range dans le logo */
+/* Intro: the planet appears, spins left, makes room for the name, then docks into the logo */
 #intro { position: fixed; inset: 0; z-index: 200; background: var(--q-bg); display: grid; place-items: center; transition: opacity .6s ease; }
 #intro.gone { opacity: 0; pointer-events: none; }
 #iname { position: fixed; left: 50%; top: 50%; z-index: 210; transform: translate(-50%, -50%); transform-origin: 0 0; white-space: nowrap; line-height: 1; font-weight: 700; font-size: clamp(36px, 8vw, 72px); color: var(--q-ink); opacity: 0; transition: opacity .5s ease; pointer-events: none; will-change: transform; }
@@ -105,26 +105,26 @@ html.intro-on .q-header .q-logo { visibility: hidden; }
     </style>
 </head>
 <body>
-<div id="intro" aria-hidden="true"><button class="skip" type="button">Passer</button></div>
+<div id="intro" aria-hidden="true"><button class="skip" type="button">Skip</button></div>
 <div id="iname" aria-hidden="true">Arakees</div>
 <div id="planet" aria-hidden="true"><canvas></canvas></div>
 <div id="wrap">
             <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [
-  {"@type": "WebSite", "name": "Arakees", "alternateName": ["Arakees CRM", "arakees.com", "Arakees", "Quansi", "Quansi Odoo", "arakees.com"], "url": "https://www.arakees.com/", "inLanguage": "fr-FR"},
-  {"@type": "SoftwareApplication", "name": "Arakees", "alternateName": ["Arakees CRM", "Arakees"], "applicationCategory": "BusinessApplication", "operatingSystem": "Navigateur web", "url": "https://www.arakees.com/", "inLanguage": "fr-FR",
-   "description": "Arakees réunit le site, la prise de rendez-vous, l’espace client, les propositions commerciales et la facturation des consultants et coachs indépendants."}]}</script>
+  {"@type": "WebSite", "name": "Arakees", "alternateName": ["Arakees CRM", "arakees.com", "Arakees", "Quansi", "Quansi Odoo", "arakees.com"], "url": "https://www.arakees.com/", "inLanguage": "en"},
+  {"@type": "SoftwareApplication", "name": "Arakees", "alternateName": ["Arakees CRM", "Arakees"], "applicationCategory": "BusinessApplication", "operatingSystem": "Web browser", "url": "https://www.arakees.com/", "inLanguage": "en",
+   "description": "Arakees brings together the website, booking, client portal, proposals and invoicing for independent consultants and coaches."}]}</script>
     
     
     <header class="q-header q-site">
         <div class="q-wrap">
             <a class="q-logo" href="/"><img src="/assets/arakees-mark-128.png" alt="" width="32" height="32" loading="lazy"/><span>Arakees</span></a>
-            <nav class="q-nav" aria-label="Navigation principale">
-                <a href="/#fonctionnalites">Fonctionnalités</a>
-                <a href="/#pour-qui">Pour qui</a>
-                <a href="/#methode">Comment ça marche</a>
-                <a href="/#faq">Questions</a>
+            <nav class="q-nav" aria-label="Main navigation">
+                <a href="/#fonctionnalites">Features</a>
+                <a href="/#pour-qui">Who it's for</a>
+                <a href="/#methode">How it works</a>
+                <a href="/#faq">FAQ</a>
             </nav>
-            <a class="q-btn" href="/#inscription">Être prévenu</a>
+            <a class="q-btn" href="/#inscription">Get notified</a>
         </div>
     </header>
             
@@ -132,11 +132,11 @@ html.intro-on .q-header .q-logo { visibility: hidden; }
                 <section class="q-hero" id="inscription">
                     <div class="q-wrap">
                         <div>
-                            <span class="q-tag">Bientôt disponible</span>
-                            <h1>Le CRM et le site client des consultants indépendants</h1>
-                            <p class="q-lead">Arakees réunit votre site, la prise de rendez-vous, l’espace client, les propositions commerciales et la facturation. Une seule plateforme, configurée à votre image.</p>
-                            <p class="q-form"><a class="q-btn" href="mailto:contact@arakees.com?subject=Liste%20d%E2%80%99attente%20Arakees&amp;body=Bonjour%2C%20je%20souhaite%20%C3%AAtre%20pr%C3%A9venu%20du%20lancement%20d%E2%80%99Arakees.">Être prévenu du lancement</a></p>
-                            <p class="q-note" id="qc-note">Écrivez-nous à <a href="mailto:contact@arakees.com">contact@arakees.com</a> : un seul e-mail, au lancement. Désinscription sur simple demande. <a href="/privacy">Confidentialité</a></p>
+                            <span class="q-tag">Coming soon</span>
+                            <h1>The CRM and client website for independent consultants</h1>
+                            <p class="q-lead">Arakees brings together your website, booking, client portal, proposals and invoicing. One platform, set up in your brand.</p>
+                            <p class="q-form"><a class="q-btn" href="mailto:contact@arakees.com?subject=Liste%20d%E2%80%99attente%20Arakees&amp;body=Bonjour%2C%20je%20souhaite%20%C3%AAtre%20pr%C3%A9venu%20du%20lancement%20d%E2%80%99Arakees.">Get notified at launch</a></p>
+                            <p class="q-note" id="qc-note">Email us at <a href="mailto:contact@arakees.com">contact@arakees.com</a>: one email, at launch. Unsubscribe any time. <a href="/privacy">Privacy</a></p>
                             <p class="q-msg" id="qc-msg" role="status" aria-live="polite"></p>
                         </div>
                     </div>
@@ -144,61 +144,61 @@ html.intro-on .q-header .q-logo { visibility: hidden; }
 
                 <section class="q-sec" id="fonctionnalites">
                     <div class="q-wrap">
-                        <h2>Toute votre activité au même endroit</h2>
-                        <p class="q-intro">Fini les outils séparés qui ne se parlent pas. Vos clients réservent, échangent avec vous et retrouvent leurs documents sur une plateforme qui porte votre nom.</p>
+                        <h2>Your whole business in one place</h2>
+                        <p class="q-intro">No more separate tools that don’t talk to each other. Your clients book, message you and find their documents on a platform that carries your name.</p>
                         <ul class="q-grid4">
-                            <li class="q-card"><h3>Tableau de bord</h3><p>Chiffre d’affaires, objectifs, impayés.</p></li>
-                            <li class="q-card"><h3>Commercial</h3><p>Pistes, pipeline, activités, propositions, messagerie.</p></li>
-                            <li class="q-card"><h3>Agenda</h3><p>Prise de rendez-vous, appels découverte, horaires.</p></li>
-                            <li class="q-card"><h3>Facturation</h3><p>Factures, prestations et tarifs, paiement en ligne.</p></li>
-                            <li class="q-card"><h3>Espace client</h3><p>Ressources, pages de séance, enregistrements, questionnaires.</p></li>
-                            <li class="q-card"><h3>Site web</h3><p>Vos pages, vos services, vos e-mails.</p></li>
-                            <li class="q-card"><h3>Support</h3><p>Tickets clients.</p></li>
-                            <li class="q-card"><h3>Équipe et outils</h3><p>Équipe, synchronisation d’agenda, signature électronique.</p></li>
+                            <li class="q-card"><h3>Dashboard</h3><p>Revenue, goals, unpaid invoices.</p></li>
+                            <li class="q-card"><h3>Sales</h3><p>Leads, pipeline, activities, proposals, messaging.</p></li>
+                            <li class="q-card"><h3>Calendar</h3><p>Online booking, discovery calls, working hours.</p></li>
+                            <li class="q-card"><h3>Billing</h3><p>Invoices, services and rates, online payment.</p></li>
+                            <li class="q-card"><h3>Client portal</h3><p>Resources, session pages, recordings, questionnaires.</p></li>
+                            <li class="q-card"><h3>Website</h3><p>Your pages, your services, your emails.</p></li>
+                            <li class="q-card"><h3>Support</h3><p>Client tickets.</p></li>
+                            <li class="q-card"><h3>Team and tools</h3><p>Team, calendar sync, e-signature.</p></li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="q-sec alt" id="pour-qui">
                     <div class="q-wrap">
-                        <h2>Pensé pour les indépendants du conseil</h2>
-                        <p class="q-intro">Arakees est né d’une plateforme construite pour une consultante en leadership.</p>
+                        <h2>Built for independent consultants</h2>
+                        <p class="q-intro">Arakees was born from a platform built for a leadership consultant.</p>
                         <ul class="q-grid4">
-                            <li class="q-card"><h3>Consultants</h3><p>Propositions, missions et facturation sans tableur.</p></li>
-                            <li class="q-card"><h3>Coachs</h3><p>Séances réservées en ligne, suivi et messages avec chaque client.</p></li>
-                            <li class="q-card"><h3>Formateurs</h3><p>Ateliers, ressources partagées et questionnaires de satisfaction.</p></li>
-                            <li class="q-card"><h3>Indépendants</h3><p>Toute activité de conseil vendue à des clients professionnels.</p></li>
+                            <li class="q-card"><h3>Consultants</h3><p>Proposals, engagements and invoicing without spreadsheets.</p></li>
+                            <li class="q-card"><h3>Coaches</h3><p>Sessions booked online, follow-up and messages with every client.</p></li>
+                            <li class="q-card"><h3>Trainers</h3><p>Workshops, shared resources and satisfaction surveys.</p></li>
+                            <li class="q-card"><h3>Freelancers</h3><p>Any consulting business selling to professional clients.</p></li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="q-sec" id="methode">
                     <div class="q-wrap">
-                        <h2>Comment ça marche</h2>
-                        <p class="q-intro">Pas d’outil à configurer seul : votre plateforme vous est livrée prête à l’emploi.</p>
+                        <h2>How it works</h2>
+                        <p class="q-intro">No tool to set up on your own: your platform is delivered ready to use.</p>
                         <ol class="q-grid3" style="list-style:none">
-                            <li class="q-card"><span class="q-num">1</span><h3>On échange</h3><p>Sur votre activité, vos clients et votre façon de travailler.</p></li>
-                            <li class="q-card"><span class="q-num">2</span><h3>On configure</h3><p>Votre marque, vos textes, vos services, vos horaires et votre facturation.</p></li>
-                            <li class="q-card"><span class="q-num">3</span><h3>Vous êtes en ligne</h3><p>Votre plateforme est prête, et nous restons là pour la faire évoluer.</p></li>
+                            <li class="q-card"><span class="q-num">1</span><h3>We talk</h3><p>About your business, your clients and the way you work.</p></li>
+                            <li class="q-card"><span class="q-num">2</span><h3>We set it up</h3><p>Your brand, your copy, your services, your hours and your invoicing.</p></li>
+                            <li class="q-card"><span class="q-num">3</span><h3>You’re live</h3><p>Your platform is ready, and we stay on hand to keep improving it.</p></li>
                         </ol>
                     </div>
                 </section>
 
                 <section class="q-sec alt" id="faq">
                     <div class="q-wrap q-faq">
-                        <h2>Questions fréquentes</h2>
-                        <details><summary>Quand Arakees sera-t-il disponible ?</summary><p>La date de lancement sera annoncée aux inscrits. Laissez votre e-mail pour être prévenu en priorité.</p></details>
-                        <details><summary>Combien coûte Arakees ?</summary><p>Les tarifs seront communiqués au lancement.</p></details>
-                        <details><summary>Puis-je utiliser mon propre nom de domaine ?</summary><p>Oui. Votre site et votre espace client sont publiés à votre adresse, avec votre logo et vos couleurs.</p></details>
-                        <details><summary>Quels outils Arakees remplace-t-il ?</summary><p>En général un outil de prise de rendez-vous, un outil de facturation, un espace de partage de documents et un site vitrine séparés.</p></details>
+                        <h2>Frequently asked questions</h2>
+                        <details><summary>When will Arakees be available?</summary><p>The launch date will be announced to subscribers. Leave your email to be among the first to know.</p></details>
+                        <details><summary>How much does Arakees cost?</summary><p>Pricing will be announced at launch.</p></details>
+                        <details><summary>Can I use my own domain name?</summary><p>Yes. Your website and client portal are published at your own address, with your logo and colours.</p></details>
+                        <details><summary>Which tools does Arakees replace?</summary><p>Usually a separate booking tool, invoicing tool, document-sharing space and website.</p></details>
                     </div>
                 </section>
 
                 <section class="q-cta">
                     <div class="q-wrap">
-                        <h2>Prêt à simplifier votre activité ?</h2>
-                        <p>Laissez votre adresse e-mail : nous vous prévenons dès l’ouverture.</p>
-                        <a class="q-btn" href="#inscription">Être prévenu du lancement</a>
+                        <h2>Ready to simplify your business?</h2>
+                        <p>Email us and we’ll let you know as soon as we open.</p>
+                        <a class="q-btn" href="#inscription">Get notified at launch</a>
                     </div>
                 </section>
             </div>
@@ -209,23 +209,23 @@ html.intro-on .q-header .q-logo { visibility: hidden; }
             <div class="q-foot-grid">
                 <div>
                     <div class="q-foot-brand">Arakees</div>
-                    <p>Le site, la prise de rendez-vous, l’espace client, les propositions et la facturation des consultants indépendants, sur une seule plateforme.</p>
+                    <p>Website, booking, client portal, proposals and invoicing for independent consultants, on one platform.</p>
                 </div>
                 <div>
-                    <h3>Produit</h3>
+                    <h3>Product</h3>
                     <ul>
-                        <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
-                        <li><a href="/#pour-qui">Pour qui</a></li>
-                        <li><a href="/#methode">Comment ça marche</a></li>
-                        <li><a href="/#faq">Questions</a></li>
+                        <li><a href="/#fonctionnalites">Features</a></li>
+                        <li><a href="/#pour-qui">Who it's for</a></li>
+                        <li><a href="/#methode">How it works</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Informations</h3>
+                    <h3>Information</h3>
                     <ul>
                         <li><a href="mailto:contact@arakees.com">Contact</a></li>
-                        <li><a href="/mentions-legales">Mentions légales</a></li>
-                        <li><a href="/privacy">Confidentialité</a></li>
+                        <li><a href="/mentions-legales">Legal notice</a></li>
+                        <li><a href="/privacy">Privacy</a></li>
                     </ul>
                 </div>
             </div>
@@ -246,20 +246,20 @@ let seen = false; try { seen = sessionStorage.getItem('arakees.intro') === '1'; 
 const BIG = 400, tr = (x, y, size) => `translate(${x}px, ${y}px) scale(${size / BIG})`;
 function dock() {
   logo.replaceWith(holder.querySelector('canvas'));
-  planet.resize(32); // calculée à la taille du logo : net, sans pixels
+  planet.resize(32); // rendered at logo size: sharp, no pixel shimmer
   holder.remove(); iname.remove();
   document.documentElement.classList.remove('intro-on');
   intro.classList.add('gone');
   setTimeout(() => intro.remove(), 700);
   try { sessionStorage.setItem('arakees.intro', '1'); } catch {}
 }
-// sans WebGL2 ou si la texture tarde (> 2,5 s), on garde le logo PNG et on saute l'intro
+// without WebGL2, or if the texture takes over 2.5 s, keep the PNG logo and skip the intro
 function fallback() {
   holder.remove(); iname.remove(); intro.remove();
   document.documentElement.classList.remove('intro-on');
 }
 const ready = Promise.race([planet.ready, new Promise((_, ko) => setTimeout(() => ko(new Error('lent')), 2500))]);
-if (reduce || seen) { intro.remove(); iname.remove(); } // pas d'écran blanc pour qui a déjà vu l'intro
+if (reduce || seen) { intro.remove(); iname.remove(); } // no white screen for visitors who already saw the intro
 if (reduce || seen) ready.then(() => { if (!reduce) planet.start(); dock(); }, fallback);
 else ready.then(runIntro, fallback);
 function runIntro() {
@@ -274,13 +274,13 @@ function runIntro() {
     const a = tr(cx, cy, s);
     await holder.animate([{ transform: tr(cx, cy + 30, s * .7), opacity: 0 }, { transform: a, opacity: 1 }], opt(800)).finished;
     await wait(150);
-    // la planète part vers la gauche (au-dessus du nom sur mobile) et laisse place au nom
+    // the planet moves left (above the name on mobile) and makes room for the name
     const k = s * .3, narrow = innerWidth < 760;
     const b = narrow ? tr(innerWidth / 2 - k / 2, innerHeight / 2 - k - 70, k) : tr(innerWidth / 2 - iname.offsetWidth / 2 - k - 28, innerHeight / 2 - k / 2, k);
     iname.classList.add('on');
     await holder.animate([{ transform: a, opacity: 1 }, { transform: b, opacity: 1 }], opt(700)).finished;
     await wait(550);
-    // puis planète et nom se rangent ensemble en haut à gauche, le fond s'efface en même temps
+    // then planet and name dock together top-left while the backdrop fades
     const r = logo.getBoundingClientRect(), n0 = iname.getBoundingClientRect(), n1 = word.getBoundingClientRect();
     const sc = parseFloat(getComputedStyle(word).fontSize) / parseFloat(getComputedStyle(iname).fontSize);
     const from = `translate(${n0.left}px, ${n0.top}px) scale(1)`;

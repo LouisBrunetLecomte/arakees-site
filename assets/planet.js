@@ -1,6 +1,6 @@
-// Planète Arakees : sphère rendue en WebGL2 à partir d’une texture 4K pré-générée.
-// Nette à toute taille (résolution de l'écran), nuages qui dérivent, halo d'atmosphère.
-// Tourne vers la gauche. Sans WebGL2, `ready` échoue et la page garde le logo PNG.
+// Arakees planet: a sphere rendered in WebGL2 from a pre-generated 4K texture.
+// Sharp at any size (screen resolution), drifting clouds, atmosphere glow.
+// Spins left. Without WebGL2, `ready` rejects and the page keeps the PNG logo.
 const VS = `#version 300 es
 in vec2 p; out vec2 uv;
 void main() { uv = p; gl_Position = vec4(p, 0., 1.); }`;
@@ -10,7 +10,7 @@ precision highp float;
 in vec2 uv; out vec4 o;
 uniform sampler2D surf, cloud; uniform float rot, px;
 const float PI = 3.14159265;
-// échantillonnage sans couture à la longitude 180° (méthode de Tarini)
+// seamless sampling across the 180° meridian (Tarini's method)
 vec4 seamless(sampler2D t, vec2 c) {
   vec2 c2 = vec2(fract(c.x + .5) - .5, c.y);
   vec2 dx = dFdx(c), dy = dFdy(c), dx2 = dFdx(c2), dy2 = dFdy(c2);
@@ -28,7 +28,7 @@ void main() {
   float cl = seamless(cloud, vec2(lon + rot * 1.35, 1. - lat)).r;
   vec3 n = vec3(q, z), L = normalize(vec3(-.55, -.45, .7));
   float diff = max(dot(n, L), 0.);
-  // reflet du soleil sur l'eau
+  // sun glint on water
   float water = smoothstep(.05, .2, col.b - col.r);
   vec3 h = normalize(L + vec3(0., 0., 1.));
   float spec = pow(max(dot(n, h), 0.), 60.) * water * .55;
@@ -36,7 +36,7 @@ void main() {
   col = col * (diff * 1.08 + .07) + spec;
   float rim = pow(1. - z, 2.5) * (diff + .25);
   col += vec3(.45, .75, 1.) * rim * .6;
-  float edge = clamp((1. - sqrt(d)) / px, 0., 1.); // bord anticrénelé
+  float edge = clamp((1. - sqrt(d)) / px, 0., 1.); // anti-aliased edge
   o = vec4(col * edge, edge);
 }`;
 
@@ -49,7 +49,7 @@ export function createPlanet(canvas, cssSize = 400) {
   let rot = 0, last = 0, raf = 0, running = false, uRot, uPx, size = N;
 
   function draw(dt) {
-    rot = (rot + dt * 0.00003) % 1; // vers la gauche
+    rot = (rot + dt * 0.00003) % 1; // spins left
     gl.uniform1f(uRot, rot);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   }
@@ -58,8 +58,8 @@ export function createPlanet(canvas, cssSize = 400) {
     draw(Math.min(64, t - last)); last = t;
   }
 
-  // le canvas est toujours calculé à sa taille d'affichage : réduire une grande image
-  // dans le navigateur crée l'effet pixelisé, alors que la carte graphique réduit la texture proprement
+  // the canvas is always rendered at its display size: shrinking a large image
+  // in the browser looks pixelated, while the GPU downsamples the texture cleanly
   function setSize(n) {
     size = n; canvas.width = canvas.height = n;
     gl.viewport(0, 0, n, n);
