@@ -1,6 +1,6 @@
 # Arakees
 
-> All-in-one platform for independent consultants and coaches: website, online booking, client portal, proposals and invoicing. Set up for you, in your brand, on your own domain. Contact: contact@arakees.com
+> All-in-one platform for independent consultants and coaches: website, online booking, client portal, proposals and invoicing. Set up for you, in your brand, on your own domain. Contact: https://www.arakees.com/contact
 
 ## Pages
 
@@ -9,4 +9,4 @@
 - [Client management software for coaches and consultants · Arakees](https://www.arakees.com/solutions): Arakees for consultants, coaches, trainers and small firms: proposals, booking, client portal and invoicing in one platform.
 - [Arakees Care · Availability, security and confidentiality](https://www.arakees.com/care): Redundant EU hosting, encrypted backups with two providers, isolated data and personal follow-up for every Arakees platform.
 - [How it works, pricing model and FAQ · Arakees](https://www.arakees.com/how-it-works): We set up your platform in your brand. A lifetime licence plus the Arakees Care subscription. Frequently asked questions.
-- [Contact · Arakees](https://www.arakees.com/contact): Questions, a demo or getting started: write to Arakees at contact@arakees.com. We answer every message personally.
+- [Contact · Arakees](https://www.arakees.com/contact): Questions, a demo or getting started: write to Arakees through the contact form. We answer every message personally.
