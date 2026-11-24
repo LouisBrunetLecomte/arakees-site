@@ -89,7 +89,7 @@
   const hdr = document.getElementById('hdr'), frame = document.getElementById('heroFrame');
   const onScroll = () => { hdr.classList.toggle('scrolled', scrollY > 8); if (frame) frame.style.setProperty('--tilt', Math.max(0, 10 - scrollY / 40) + 'deg'); };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  // Adresse e-mail assemblée dans le navigateur : lisible pour un humain, absente du HTML pour les robots.
+  // Email address assembled in the browser: readable by people, absent from the HTML for bots.
   document.querySelectorAll('.eml').forEach(el => { const a = document.createElement('a'); a.href = 'mailto:' + el.dataset.u + '@' + el.dataset.d; a.textContent = el.dataset.u + '@' + el.dataset.d; el.replaceWith(a); });
 })();
 </script>
