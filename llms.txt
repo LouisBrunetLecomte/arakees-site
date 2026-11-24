@@ -9,4 +9,5 @@
 - [Client management software for coaches and consultants · Arakees](https://www.arakees.com/solutions): Arakees for consultants, coaches, trainers and small firms: proposals, booking, client portal and invoicing in one platform.
 - [Arakees Care · Availability, security and confidentiality](https://www.arakees.com/care): Redundant EU hosting, encrypted backups with two providers, isolated data and personal follow-up for every Arakees platform.
 - [How it works, pricing model and FAQ · Arakees](https://www.arakees.com/how-it-works): We set up your platform in your brand. Pricing: setup from €990 including a lifetime licence, then Arakees Care from €49 a month. Frequently asked questions.
+- [Pricing · Arakees](https://www.arakees.com/pricing): Arakees pricing: Essential, Pro and Firm plans. A one-time setup from €990 including a lifetime licence, then Arakees Care from €49 a month. No per-user fees.
 - [Contact · Arakees](https://www.arakees.com/contact): Questions, a demo or getting started: write to Arakees through the contact form. We answer every message personally.
