@@ -53,6 +53,7 @@
         <label>Your name<input name="name" required maxlength="100" autocomplete="name"></label>
         <label>Your email<input name="email" type="email" required maxlength="200" autocomplete="email"></label>
         <label>Company (optional)<input name="company" maxlength="200" autocomplete="organization"></label>
+        <label>Plan<select name="plan"><option value="">Not sure yet</option><option>Essential</option><option>Pro</option><option>Firm</option></select></label>
         <label>Your message<textarea name="message" required minlength="10" maxlength="2000" rows="6"></textarea></label>
         <div class="hp" aria-hidden="true"><label>Website<input name="websiteUrl" tabindex="-1" autocomplete="off"></label></div>
         <button class="btn btn-primary" type="submit">Send my message</button>
@@ -66,12 +67,12 @@
 .cform { display: grid; gap: 14px; text-align: left; max-width: 520px; margin: 0 auto; }
 .cform label { display: grid; gap: 6px; font-weight: 600; font-size: 15px; }
 .cform label span { font-weight: 400; color: var(--muted, #6a8692); }
-.cform input, .cform textarea { font: inherit; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
-.cform input:focus, .cform textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+.cform input, .cform textarea, .cform select { font: inherit; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.cform input:focus, .cform textarea:focus, .cform select:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
 .cform button { justify-self: start; }
 .cform .hp { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 </style>
-<script src="/assets/contact.js" defer></script>
+<script src="/assets/contact.js?v=2" defer></script>
 </main>
 <footer class="ftr">
   <div class="wrap">
