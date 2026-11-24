@@ -8,5 +8,5 @@
 - [CRM, booking and invoicing for consultants · Arakees](https://www.arakees.com/product): Dashboard, sales pipeline, proposals, calendar, billing, client portal and website: everything an independent practice runs on, in one platform.
 - [Client management software for coaches and consultants · Arakees](https://www.arakees.com/solutions): Arakees for consultants, coaches, trainers and small firms: proposals, booking, client portal and invoicing in one platform.
 - [Arakees Care · Availability, security and confidentiality](https://www.arakees.com/care): Redundant EU hosting, encrypted backups with two providers, isolated data and personal follow-up for every Arakees platform.
-- [How it works, pricing model and FAQ · Arakees](https://www.arakees.com/how-it-works): We set up your platform in your brand. A lifetime licence plus the Arakees Care subscription. Frequently asked questions.
+- [How it works, pricing model and FAQ · Arakees](https://www.arakees.com/how-it-works): We set up your platform in your brand. Pricing: setup from €990 including a lifetime licence, then Arakees Care from €49 a month. Frequently asked questions.
 - [Contact · Arakees](https://www.arakees.com/contact): Questions, a demo or getting started: write to Arakees through the contact form. We answer every message personally.
